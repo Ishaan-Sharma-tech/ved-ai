@@ -1,0 +1,47 @@
+# Core
+fastapi
+uvicorn[standard]
+python-dotenv
+groq
+aiosqlite
+networkx
+sentence-transformers
+watchdog
+apscheduler
+tavily-python
+httpx
+beautifulsoup4
+lxml
+websockets
+python-telegram-bot>=21.0
+pydantic
+python-multipart
+numpy
+
+# Voice & Vision
+livekit-agents==1.5.1
+livekit-plugins-google==1.5.1
+livekit-plugins-silero==1.5.1
+
+# Google Services (OAuth)
+google-api-python-client
+google-auth-oauthlib
+google-auth-httplib2
+
+# System & Media Control
+psutil
+pycaw
+comtypes
+screen-brightness-control
+Pillow
+pyautogui
+reportlab
+
+# Web & Tools Utilities
+playwright
+youtube-transcript-api
+websocket-client
+keyboard
+pyperclip
+requests
+plyer

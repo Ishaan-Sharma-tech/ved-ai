@@ -1,0 +1,76 @@
+# ========================
+# Secrets & Credentials (CRITICAL)
+# ========================
+.env
+credentials.json
+token.json
+
+# ========================
+# Python Environments
+# ========================
+venv/
+env/
+ENV/
+.venv
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# ========================
+# Memory & User Data
+# ========================
+memory/
+aether_memory.db
+aether_memory.db-journal
+assistant_work/
+aether_workspace/
+screenshots/
+
+# ========================
+# Frontend (React/Vite)
+# ========================
+frontend/node_modules/
+frontend/dist/
+frontend/.eslintcache
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ========================
+# Tauri & Rust Builds
+# ========================
+src-tauri/target/
+src-tauri/gen/schemas/
+
+# ========================
+# IDEs & System
+# ========================
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# ========================
+# Playwright & Tools
+# ========================
+.playwright_browsers/
+.playwright/
+node_modules/

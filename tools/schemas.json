@@ -1,0 +1,412 @@
+{
+  "web_search": {
+    "required": [
+      "query"
+    ],
+    "optional": {
+      "mode": [
+        "text",
+        "voice"
+      ],
+      "max_results": null
+    },
+    "defaults": {
+      "mode": "text",
+      "max_results": 3
+    }
+  },
+  "file_manager": {
+    "required": [],
+    "valid_actions": [
+      "create",
+      "read",
+      "edit",
+      "append",
+      "delete",
+      "list",
+      "mkdir",
+      "search",
+      "rename",
+      "recent",
+      "info"
+    ],
+    "action_aliases": {
+      "save": "create",
+      "write": "create",
+      "make": "create",
+      "open": "read",
+      "get": "read",
+      "show": "list",
+      "ls": "list",
+      "remove": "delete",
+      "rm": "delete",
+      "find": "search"
+    }
+  },
+  "notes": {
+    "required": [],
+    "valid_actions": [
+      "add",
+      "list",
+      "read",
+      "search",
+      "delete",
+      "tag"
+    ],
+    "action_aliases": {
+      "save": "add",
+      "create": "add",
+      "new": "add",
+      "write": "add",
+      "show": "list",
+      "get": "list",
+      "find": "search"
+    }
+  },
+  "scheduler": {
+    "required": [
+      "action"
+    ],
+    "valid_actions": [
+      "remind",
+      "repeat",
+      "list",
+      "cancel",
+      "cancel_all"
+    ],
+    "action_aliases": {
+      "set": "remind",
+      "add": "remind",
+      "create": "remind",
+      "schedule": "remind",
+      "new": "remind"
+    }
+  },
+  "google_tasks": {
+    "required": [
+      "action"
+    ],
+    "valid_actions": [
+      "add",
+      "list",
+      "complete",
+      "delete",
+      "clear"
+    ],
+    "action_aliases": {
+      "create": "add",
+      "new": "add",
+      "save": "add",
+      "show": "list",
+      "get": "list",
+      "view": "list",
+      "done": "complete",
+      "finish": "complete",
+      "check": "complete",
+      "remove": "delete",
+      "cancel": "delete"
+    }
+  },
+  "gmail": {
+    "required": [
+      "action"
+    ],
+    "valid_actions": [
+      "inbox",
+      "unread",
+      "search",
+      "send",
+      "read",
+      "draft",
+      "read_thread"
+    ],
+    "action_aliases": {
+      "check": "inbox",
+      "list": "inbox",
+      "show": "inbox",
+      "get": "inbox",
+      "read inbox": "inbox",
+      "check inbox": "inbox",
+      "check_unread": "unread",
+      "count": "unread",
+      "compose": "send",
+      "write": "send",
+      "reply": "send"
+    }
+  },
+  "drive": {
+    "required": [
+      "action"
+    ],
+    "valid_actions": [
+      "list",
+      "search",
+      "read",
+      "storage",
+      "create",
+      "download",
+      "upload"
+    ],
+    "action_aliases": {
+      "show": "list",
+      "get": "list",
+      "ls": "list",
+      "find": "search",
+      "look": "search",
+      "upload": "create",
+      "write": "create",
+      "make": "create"
+    }
+  },
+  "system_control": {
+    "required": [
+      "action"
+    ],
+    "valid_actions": [
+      "open",
+      "sysinfo",
+      "volume",
+      "brightness",
+      "screenshot",
+      "lock",
+      "empty_trash",
+      "mute_mic",
+      "unmute_mic"
+    ],
+    "action_aliases": {
+      "system_info": "sysinfo",
+      "system info": "sysinfo",
+      "info": "sysinfo",
+      "specs": "sysinfo",
+      "status": "sysinfo",
+      "open_app": "open",
+      "launch": "open",
+      "start": "open",
+      "screen": "screenshot",
+      "snap": "screenshot",
+      "vol": "volume",
+      "sound": "volume",
+      "bright": "brightness",
+      "dim": "brightness"
+    }
+  },
+  "screen_reader": {
+    "required": [],
+    "optional": {
+      "query": null
+    },
+    "defaults": {
+      "query": "What is on the screen right now?"
+    },
+    "invalid_args": [
+      "text",
+      "content",
+      "message"
+    ]
+  },
+  "code_runner": {
+    "required": [
+      "action"
+    ],
+    "valid_actions": [
+      "run",
+      "run_file",
+      "save_run"
+    ],
+    "action_aliases": {
+      "execute": "run",
+      "exec": "run",
+      "eval": "run"
+    }
+  },
+  "youtube_summarizer": {
+    "required": [
+      "url"
+    ],
+    "optional": {
+      "query": null
+    }
+  },
+  "workspace_manager": {
+    "required": [
+      "action"
+    ],
+    "valid_actions": [
+      "enable_focus",
+      "disable_focus"
+    ],
+    "action_aliases": {
+      "focus": "enable_focus",
+      "start focus": "enable_focus",
+      "study mode": "enable_focus",
+      "relax": "disable_focus",
+      "stop focus": "disable_focus",
+      "chill mode": "disable_focus"
+    }
+  },
+  "api_caller": {
+    "required": [
+      "url"
+    ],
+    "optional": {
+      "method": "GET",
+      "headers": null,
+      "payload": null
+    },
+    "defaults": {
+      "method": "GET"
+    }
+  },
+  "image_generator": {
+    "required": [
+      "prompt"
+    ],
+    "optional": {
+      "seed": null,
+      "filename": null
+    }
+  },
+  "document_generator": {
+    "required": [
+      "body"
+    ],
+    "optional": {
+      "title": "",
+      "filename": null
+    },
+    "defaults": {
+      "title": ""
+    }
+  },
+  "playwright_agent": {
+    "required": [
+      "url"
+    ],
+    "valid_actions": [
+      "read",
+      "click",
+      "fill"
+    ],
+    "optional": {
+      "action": "read",
+      "css_selector": "",
+      "fill_text": ""
+    },
+    "defaults": {
+      "action": "read"
+    }
+  },
+  "meta_developer": {
+    "required": [
+      "action"
+    ],
+    "valid_actions": [
+      "list",
+      "read",
+      "create",
+      "delete"
+    ],
+    "optional": {
+      "name": "",
+      "code": "",
+      "schema": null
+    },
+    "defaults": {
+      "action": "list"
+    }
+  },
+  "spotify_controller": {
+    "type": "object",
+    "properties": {
+      "current_volume": {
+        "type": "integer",
+        "description": "The current volume of the device (0-100)."
+      },
+      "device_id": {
+        "type": "string",
+        "description": "The ID of the device on which to pause or play music."
+      },
+      "SPOTIFY_API_KEY_HERE": {
+        "type": "string",
+        "description": "Your Spotify API key."
+      }
+    },
+    "required": [
+      "device_id",
+      "SPOTIFY_API_KEY_HERE"
+    ]
+  },
+  "tech_news": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "tech_news",
+    "description": "Fetch top 5 trending stories from HackerNews API and return title and URL as a clean, readable list",
+    "type": "object",
+    "properties": {
+      "top_stories_count": {
+        "type": "integer",
+        "description": "Number of top stories to fetch (default: 5)"
+      }
+    },
+    "required": [
+      "top_stories_count"
+    ]
+  },
+  "youtube_audio_downloader": {
+    "$schema": "https://json-schema.org/draft-07/schema#",
+    "title": "youtube_audio_downloader",
+    "type": "object",
+    "properties": {
+      "url": {
+        "type": "string",
+        "description": "YouTube video URL"
+      },
+      "output": {
+        "type": "string",
+        "description": "Output file path"
+      },
+      "quality": {
+        "type": "string",
+        "description": "Video quality"
+      },
+      "format": {
+        "type": "string",
+        "description": "Output format"
+      }
+    },
+    "required": [
+      "url"
+    ],
+    "additionalProperties": false
+  },
+  "desktop_automation": {
+    "required": ["action"],
+    "valid_actions": [
+      "enable_autopilot",
+      "disable_autopilot",
+      "mouse_move",
+      "mouse_click",
+      "mouse_drag",
+      "type_text",
+      "press_key",
+      "hotkey",
+      "scroll"
+    ],
+    "optional": {
+      "x": null,
+      "y": null,
+      "button": "left",
+      "clicks": 1,
+      "text": "",
+      "press_enter": false,
+      "key": "",
+      "keys": [],
+      "amount": null
+    },
+    "defaults": {
+      "button": "left",
+      "clicks": 1,
+      "press_enter": false,
+      "keys": []
+    }
+  }
+}
