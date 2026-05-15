@@ -368,6 +368,25 @@ export default function App() {
     setMuted(false)
   }
 
+  const restartVoiceEngine = async () => {
+    setVoiceStatus("Restarting Engine...")
+    try {
+      if (roomRef.current) { await roomRef.current.disconnect(); roomRef.current = null }
+      setVoiceActive(false)
+      const res = await fetch(`${API_URL}/api/restart_voice`, { method: "POST" })
+      const data = await res.json()
+      if (data.status === "success") {
+        setVoiceStatus("Engine Restarted. Click to connect.")
+        setMessages(prev => [...prev, { id: Date.now(), role: "assistant", content: `⚙️ ${data.message}`, time: formatTime() }])
+      } else {
+        throw new Error(data.error)
+      }
+    } catch (err) {
+      setVoiceStatus("Restart Failed")
+      console.error(err)
+    }
+  }
+
   const toggleMute = async () => {
     if (!roomRef.current) return
     const isMuted = !muted
@@ -409,6 +428,16 @@ export default function App() {
           }}>
             {voiceStatus || (connected ? "Sys Online" : "Connecting...")}
           </div>
+          <button 
+            onClick={restartVoiceEngine}
+            style={{
+              background: "rgba(255,255,255,0.1)", border: "1px solid rgba(255,255,255,0.2)",
+              color: "#fff", borderRadius: "8px", padding: "4px 8px", fontSize: "11px", cursor: "pointer"
+            }}
+            title="Restart Background Voice Engine if stuck"
+          >
+            ↻ Restart Engine
+          </button>
         </div>
         <div style={{ display: "flex", gap: 10 }}>
           <button onClick={() => setShowSettings(!showSettings)} style={{

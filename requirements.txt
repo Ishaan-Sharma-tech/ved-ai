@@ -45,3 +45,4 @@ keyboard
 pyperclip
 requests
 plyer
+pynput

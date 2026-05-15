@@ -2,116 +2,116 @@
   "tech_news": {
     "description": "Fetch top 5 trending stories from HackerNews API and return title and URL as a clean, readable list",
     "file": "tech_news.py",
-    "loaded_at": 1778678405.2814689
+    "loaded_at": 1778826049.8010786
   },
   "web_scraper": {
     "description": "Scrape a website URL to extract details. Set query parameter to extract specific intel.",
     "file": "web_scraper.py",
-    "loaded_at": 1778678405.4063115
+    "loaded_at": 1778826049.935043
   },
   "web_search": {
     "description": "Search the web for real-time information, news, facts, prices, scores, anything current",
     "file": "web_search.py",
-    "loaded_at": 1778678405.789849
+    "loaded_at": 1778826050.366776
   },
   "workspace_manager": {
     "description": "Manage workspaces and focus modes. Actions: enable_focus, disable_focus.",
     "file": "workspace_manager.py",
-    "loaded_at": 1778678405.8098974
+    "loaded_at": 1778826050.4106102
   },
   "youtube_audio_downloader": {
     "description": "Download YouTube audio as MP3 using yt-dlp",
     "file": "youtube_audio_downloader.py",
-    "loaded_at": 1778678405.8267717
+    "loaded_at": 1778826050.4285665
   },
   "youtube_summarizer": {
     "description": "Summarize any YouTube video \u2014 paste the URL and get key points",
     "file": "youtube_summarizer.py",
-    "loaded_at": 1778678405.845058
+    "loaded_at": 1778826050.4463587
   },
   "api_caller": {
     "description": "Call any REST API using GET, POST, PUT, DELETE with optional headers and payload.",
     "file": "api_caller.py",
-    "loaded_at": 1778678404.4160895
+    "loaded_at": 1778826048.6796963
   },
   "code_runner": {
     "description": "Write and execute Python code in sandbox with auto pip dependency installs",
     "file": "code_runner.py",
-    "loaded_at": 1778678404.4461725
+    "loaded_at": 1778826048.6948662
   },
   "daily_briefing": {
     "description": "Generate a smart daily briefing: unread emails, pending tasks, notes, and weather \u2014 delivered as one clean summary.",
     "file": "daily_briefing.py",
-    "loaded_at": 1778678404.5847917
+    "loaded_at": 1778826048.7111096
   },
   "desktop_automation": {
     "description": "Hands-free OS control: click, type, press keys, hotkeys, scroll. Requires enabling autopilot first.",
     "file": "desktop_automation.py",
-    "loaded_at": 1778678404.6034327
+    "loaded_at": 1778826048.7259667
   },
   "document_generator": {
     "description": "Generate clean formatted PDF documents.",
     "file": "document_generator.py",
-    "loaded_at": 1778678404.8121681
+    "loaded_at": 1778826048.930965
   },
   "drive": {
     "description": "List, search, read, create, download locally, and upload files in Google Drive",
     "file": "drive.py",
-    "loaded_at": 1778678404.828569
+    "loaded_at": 1778826048.9473703
   },
   "file_manager": {
     "description": "Create, read, edit, list, delete files inside your workspace",
     "file": "file_manager.py",
-    "loaded_at": 1778678404.8496926
+    "loaded_at": 1778826048.9656308
   },
   "gmail": {
     "description": "Read inbox, send/draft emails, read full threads, search \u2014 full email management",
     "file": "gmail.py",
-    "loaded_at": 1778678404.8669727
+    "loaded_at": 1778826048.9821303
   },
   "google_tasks": {
     "description": "Add, list, complete, delete tasks in Google Tasks \u2014 for future reminders and named to-do items",
     "file": "google_tasks.py",
-    "loaded_at": 1778678404.8921437
+    "loaded_at": 1778826049.0023508
   },
   "image_generator": {
     "description": "Generate an image unconditionally from a text prompt using Pollinations AI.",
     "file": "image_generator.py",
-    "loaded_at": 1778678404.9098494
+    "loaded_at": 1778826049.0194476
   },
   "meta_developer": {
     "description": "Advanced tool for Aether to evolve its own capabilities. Can list, read, create, or delete other tools. Allows for zero-downtime evolution.",
     "file": "meta_developer.py",
-    "loaded_at": 1778678404.9306757
+    "loaded_at": 1778826049.0358841
   },
   "notes": {
     "description": "Create, read, search and manage personal notes with tags",
     "file": "notes.py",
-    "loaded_at": 1778678404.9500778
+    "loaded_at": 1778826049.0513043
   },
   "playwright_agent": {
     "description": "Headless browser agent to interact with JS-rendered sites, click buttons, fill forms, and extract content.",
     "file": "playwright_agent.py",
-    "loaded_at": 1778678405.065437
+    "loaded_at": 1778826049.1500266
   },
   "scheduler": {
     "description": "Schedule reminders and recurring tasks \u2014 one-time or repeating",
     "file": "scheduler.py",
-    "loaded_at": 1778678405.2001238
+    "loaded_at": 1778826049.3026304
   },
   "screen_reader": {
     "description": "See and describe what's currently on screen \u2014 ask questions about screen content",
     "file": "screen_reader.py",
-    "loaded_at": 1778678405.216821
+    "loaded_at": 1778826049.3216178
   },
   "spotify_controller": {
     "description": "A tool to pause or play music via the Spotify Web API",
     "file": "spotify_controller.py",
-    "loaded_at": 1778678405.236066
+    "loaded_at": 1778826049.5490577
   },
   "system_control": {
     "description": "Control system: open apps, sysinfo, volume, brightness, screenshot, lock, empty_trash, mute_mic, unmute_mic",
     "file": "system_control.py",
-    "loaded_at": 1778678405.2592418
+    "loaded_at": 1778826049.5640929
   }
 }

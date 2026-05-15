@@ -100,7 +100,25 @@ async def run(**kwargs) -> str:
             return "Error: pyautogui is not installed. Please run 'pip install pyautogui'."
 
         def _execute_sync():
-            if action in ["mouse_move", "move", "mouse_click", "click", "mouse_drag", "drag"]:
+            if action == "open_app":
+                app_name = kwargs.get("app_name", "")
+                if not app_name:
+                    return "Error: app_name is required."
+                try:
+                    import os
+                    # Fast Native Way
+                    os.startfile(app_name)
+                    return f"Instantly opened: {app_name}"
+                except Exception:
+                    # Fallback Way: Windows Search
+                    pag.hotkey('win', 's')
+                    time.sleep(0.5)
+                    pag.write(app_name, interval=0.01)
+                    time.sleep(0.5)
+                    pag.press('enter')
+                    return f"Opened {app_name} via Start Menu search."
+
+            elif action in ["mouse_move", "move", "mouse_click", "click", "mouse_drag", "drag"]:
                 x = kwargs.get("x")
                 y = kwargs.get("y")
                 

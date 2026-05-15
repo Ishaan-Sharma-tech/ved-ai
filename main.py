@@ -190,6 +190,38 @@ async def quick_explain(req: ExplainRequest):
     except Exception as e:
         return JSONResponse(status_code=500, content={"error": str(e)})
 
+@app.post("/api/restart_voice")
+async def restart_voice_agent():
+    try:
+        import psutil
+        import subprocess
+        import os
+        from sys import executable
+        
+        # 1. Kill existing voice agent processes
+        killed_count = 0
+        for proc in psutil.process_iter(['pid', 'name', 'cmdline']):
+            try:
+                cmdline = proc.info.get('cmdline')
+                if cmdline and 'voice.agent' in cmdline:
+                    proc.kill()
+                    killed_count += 1
+            except (psutil.NoSuchProcess, psutil.AccessDenied):
+                pass
+                
+        # 2. Start a new one
+        env = os.environ.copy()
+        env["PYTHONIOENCODING"] = "utf-8"
+        subprocess.Popen(
+            [executable, "-m", "voice.agent", "dev"],
+            env=env,
+            creationflags=subprocess.CREATE_NO_WINDOW if os.name == 'nt' else 0
+        )
+        return {"status": "success", "message": f"Voice engine restarted (Killed {killed_count} ghost processes)."}
+    except Exception as e:
+        logger.error(f"Restart voice error: {e}")
+        return JSONResponse(status_code=500, content={"status": "error", "error": str(e)})
+
 @app.websocket("/ws/chat")
 async def chat_ws(websocket: WebSocket):
     await websocket.accept()

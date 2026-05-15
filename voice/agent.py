@@ -27,10 +27,15 @@ def get_voice_identity() -> str:
     ai_name = os.environ.get("AI_NAME", "Aether")
     return f"""You are {ai_name}, {user_name}'s elite personal AI assistant. You must treat him like your Boss. You are in Voice mode.
 
-Style: Highly respectful and formal tone. Respond strictly in pure English.
-- Use deferential terms like 'Yes Boss', 'Sir', 'Right away Boss'.
-- Treat {user_name} with extreme respect and authority. Maintain absolute professionalism.
-- Keep responses strictly under 2 sentences. Fast, direct, and obedient execution.
+=== MULTILINGUAL PROTOCOL ===
+- You are a polyglot. You MUST detect the language the user is speaking (e.g., Hindi, English, Spanish, Hinglish) and respond fluently in that EXACT same language.
+- Maintain your highly respectful and formal tone ('Yes Boss', 'Sir') across all languages.
+
+=== WAKE WORD PROTOCOL (CRITICAL) ===
+- You are constantly listening to the room, but you must remain in DORMANT MODE.
+- If you hear background chatter, people talking to each other, or TV noise, you MUST STAY COMPLETELY SILENT. Do not say "I don't understand" or "Can I help you?". Just ignore it.
+- YOU ONLY WAKE UP AND RESPOND if the user explicitly says your name: "{ai_name}" or "Ved". 
+- Example: If you hear "Ved, what's the weather?", you answer. If you hear "Hey guys let's go get food", you stay 100% silent.
 
 Tools available — use them:
 - search_web: weather, news, scores, prices
@@ -272,37 +277,30 @@ class VedVoiceAgent(Agent):
             return f"Code run nahi hua: {e}"
 
     @function_tool()
-    async def os_control(self, action: str, x: int = None, y: int = None, text: str = "", key: str = "", keys: list[str] = [], amount: int = None, duration: float = None) -> str:
+    async def os_control(self, action: str, x: int = None, y: int = None, norm_x: int = None, norm_y: int = None, text: str = "", key: str = "", keys: list[str] = [], amount: int = None, duration: float = None) -> str:
         """HANDS-FREE OS CONTROL — Physical mouse and keyboard automation.
 
 CRITICAL RULES:
-1. FIRST TIME ONLY: Call with action='enable_autopilot' before any physical action. Once enabled, do NOT call again.
-2. EXECUTE ONE ACTION AT A TIME. NEVER call os_control multiple times simultaneously.
-3. ALWAYS WAIT for the result of each call before making the next one.
-4. After hotkeys with 'win' key, the OS needs ~2 seconds to render — the tool handles this automatically.
+1. FIRST TIME ONLY: Call with action='enable_autopilot' before any physical action.
+2. EXECUTE ONE ACTION AT A TIME. Wait for result.
 
 Available actions:
-- enable_autopilot: REQUIRED first call to unlock physical control
-- disable_autopilot: revoke physical control
-- type: type text into the currently focused window (text=...)
-- key: press a single key like 'enter', 'escape', 'tab' (key=...)
-- hotkey: press key combinations like ['ctrl','c'], ['win','s'], ['alt','tab'] (keys=[...])
-- mouse_click: click at coordinates (x=, y=, button='left'/'right')
-- mouse_move: move cursor (x=, y=)
-- scroll: scroll up/down (amount=, positive=up negative=down)
-- wait: pause for OS to settle (duration= seconds, default 2)
-
-CORRECT SEQUENCE to open Notepad:
-  Call 1: os_control(action='enable_autopilot') → wait for result
-  Call 2: os_control(action='hotkey', keys=['win','s']) → wait for result
-  Call 3: os_control(action='type', text='Notepad') → wait for result
-  Call 4: os_control(action='key', key='enter') → wait for result
+- enable_autopilot, disable_autopilot
+- type: (text=...)
+- key: press single key (key=...)
+- hotkey: (keys=[...])
+- mouse_click: (norm_x=, norm_y=, button=) Use normalized [0-1000] coordinates from vision!
+- mouse_move: (norm_x=, norm_y=)
+- scroll: (amount=)
+- wait: (duration=)
 """
         logger.info(f"Voice OS Control: {action}")
         try:
             kwargs_for_tool = dict(action=action)
             if x is not None: kwargs_for_tool["x"] = x
             if y is not None: kwargs_for_tool["y"] = y
+            if norm_x is not None: kwargs_for_tool["norm_x"] = norm_x
+            if norm_y is not None: kwargs_for_tool["norm_y"] = norm_y
             if text: kwargs_for_tool["text"] = text
             if key: kwargs_for_tool["key"] = key
             if keys: kwargs_for_tool["keys"] = keys
@@ -313,17 +311,6 @@ CORRECT SEQUENCE to open Notepad:
             return str(r)
         except Exception as e:
             return f"OS Control failed: {e}"
-
-    @function_tool()
-    async def read_screen(self, question: str = "What is currently on screen?") -> str:
-        """Capture a screenshot and analyze it with vision AI. NOTE: In voice mode with screen share active, you already see the screen live — use this only for explicit verification or when screen share is NOT active."""
-        logger.info(f"Voice read_screen: {question[:40]}")
-        try:
-            r = await TOOL_REGISTRY["screen_reader"](query=question)
-            await _save(f"screen_reader: {str(r)[:100]}")
-            return str(r)
-        except Exception as e:
-            return f"Screen read failed: {e}"
 
     @function_tool()
     async def summarize_video(self, url: str, query: str = "") -> str:

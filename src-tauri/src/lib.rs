@@ -62,6 +62,7 @@ fn spawn_all_services(root_dir: PathBuf, pids: Arc<Mutex<Vec<u32>>>) {
         let mut cmd = Command::new(&python_path);
         cmd.args(&args)
             .current_dir(&root_dir)
+            .env("PYTHONIOENCODING", "utf-8")
             .stdout(Stdio::inherit())
             .stderr(Stdio::inherit());
 
